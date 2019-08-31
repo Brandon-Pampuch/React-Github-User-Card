@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Container = styled.div`
 display:flex;
-justify-content:space-between;
-padding: 10px;
+justify-content:space-around;
 margin: 29px auto;
 border: 1px solid ${props => props.theme.colors.highlight};
 border-radius: 5px;
@@ -23,13 +22,13 @@ width: 40%;
 
 const Profile = (props) => {
 
-    const {follower} = props
+    const {state} = props
     
     return ( 
     <Container>
-        <img src={follower.avatar_url} alt={follower.login}></img>
-        <Link to={`/followers/${follower.login}`}><h1>{follower.login}</h1></Link>
-     
+        <img src={state.avatar_url} alt={state.login}></img>
+        <h1>{state.login}</h1>
+        <Link to={'/followers'}><button>followers</button></Link>
     </Container> 
     );
 }
