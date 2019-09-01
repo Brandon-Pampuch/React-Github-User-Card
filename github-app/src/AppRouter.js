@@ -7,14 +7,18 @@ import Search from './components/Search'
 
 const AppRouter = (props) => {
 
-    const {followers} = props
+    const {followers, submitHandler} = props
 
     return ( 
         <div>
+            <Route path = {'/search'} render={(props)=> <Search 
+                                                        {...props}
+                                                        submitHandler={submitHandler}
+                                                        />}/>
             <Route exact path ={'/'}></Route>
             <Route path ={'/followers/:name'} render={(props)=> <Followers
                                                             {...props}
-                                                        />} />
+                                                        />}/>
             <Route exact path={'/followers'} render={(props)=> <List
                                                             {...props}
                                                             followers={followers}

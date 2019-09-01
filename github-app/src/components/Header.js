@@ -21,7 +21,7 @@ const Header = (props) => {
         <div>
             <Navigation>
                 <Link to={'/'}><li>Home</li></Link>
-                <li>Search</li>
+                <Link to={'/Search'}><li>Search</li></Link>
         
             </Navigation>
         </div>

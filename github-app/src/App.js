@@ -12,6 +12,8 @@ function App() {
 
   const [state, setState] = useState([])
   const [followers, setFollowers] = useState([])
+  const [search, setSearch] = useState('')
+  const [found, setFound] = useState('')
 
   useEffect(()=>{
       Axios.get('https://api.github.com/users/Brandon-Pampuch')
@@ -31,13 +33,26 @@ function App() {
         console.log(err)
       })
   },[])
+  useEffect(()=>{
+      Axios.get(`https://api.github.com/users/${search}`)
+      .then(res =>{
+        console.log("search-call",res.data)
+        setFound(res.data)
+      }).catch(err =>{
+        console.log(err)
+      })
+  },[])
+//refactor above call as a custom hook
 
+  const submitHandler = (follower) =>{
+    setSearch(`${follower}`)
+  }
 console.log("followers",followers)
   return (
     <div className="App">
       <Header></Header>
       <Profile state={state}/>
-      <AppRouter followers={followers} />
+      <AppRouter submitHandler={submitHandler} followers={followers} />
       <GlobalStyle></GlobalStyle>
     </div>
   );
