@@ -2,11 +2,12 @@ import React, {useState, useEffect}  from 'react';
 import './App.css';
 import Axios from 'axios';
 import GlobalStyle from './styles/global'
-import styled from 'styled-components'
+
 
 import Header from './components/Header'
 import Profile from './components/Profile'
 import AppRouter from './AppRouter'
+import Card from './components/Card'
 
 function App() {
 
@@ -56,6 +57,8 @@ console.log("followers",followers)
       <Profile state={state}/>
       <AppRouter submitHandler={submitHandler} followers={followers} />
       <GlobalStyle></GlobalStyle>
+      <Card follower={found}></Card>
+
     </div>
   );
 }
